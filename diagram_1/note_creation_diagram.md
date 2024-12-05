@@ -1,3 +1,4 @@
+```mermaid
 sequenceDiagram
     participant User
     participant Server
@@ -17,6 +18,21 @@ sequenceDiagram
     activate Server
     Server-->>User: CSS file
     deactivate Server
+
+    User->>Server: GET /main.js
+    activate Server
+    Server-->>User: JavaScript file
+    deactivate Server
+
+    Note right of User: Executing JavaScript to fetch the notes
+
+    User->>Server: GET /data.json
+    activate Server
+    Server-->>User: Updated notes JSON
+    deactivate Server
+
+    Note right of User: Rendering the updated notes list
+
 
     User->>Server: GET /main.js
     activate Server
